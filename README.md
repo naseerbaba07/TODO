@@ -23,6 +23,7 @@ This project demonstrates CRUD operations, REST API integration, and modern UI f
 /backend    -> Spring Boot app
 /database   -> SQL scripts
 
+---
 ## 🛠 Tech Stack
 
 ### Frontend
@@ -57,7 +58,8 @@ CREATE TABLE todos (
     CONSTRAINT priority_check
         CHECK (priority IN ('HIGH','MEDIUM','LOW'))
 );
-
+```
+---
 
 ## ▶️ Run Backend (Spring Boot)
 
@@ -79,8 +81,9 @@ npm run dev
 Frontend runs at:
 http://localhost:5173
 
-
-🔌 API Endpoints
+---
+---
+## 🔌 API Endpoints
 
 | Method | Endpoint    | Description   |
 | ------ | ----------- | ------------- |
@@ -89,4 +92,4 @@ http://localhost:5173
 | PUT    | /todos/{id} | Update task   |
 | DELETE | /todos/{id} | Delete task   |
 
-
+---
