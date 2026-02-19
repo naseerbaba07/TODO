@@ -44,9 +44,24 @@ This project demonstrates CRUD operations, REST API integration, and modern UI f
 
 ---
 
-## ⚙️ Database Setup (PostgreSQL)
+## ⚙️ Database Setup (PostgreSQL with Neon DB)
+This project uses Neon DB, a cloud-native PostgreSQL platform, instead of a locally hosted database. Neon provides serverless scaling, branching, and secure connections, making it ideal for modern applications.
+Setup Instructions
+- Create a Neon Project
+- Sign up at Neon and create a new project.
+- Copy the provided connection string.
+- Configure Environment Variables 
+- Add your Neon DB connection string to application.properties
 
-Open **psql / pgAdmin** and run:
+
+```application.properties
+spring.datasource.url=jdbc:postgresql://<host>/<database>?sslmode=require
+spring.datasource.username=<user>
+spring.datasource.password=<password>
+spring.datasource.driver-class-name=org.postgresql.Driver
+```
+⚠️ Keep sensitive values (username/password) out of version control. Use environment variables or a secrets manager in production.
+
 
 ```sql
 CREATE TABLE todos (
@@ -67,8 +82,7 @@ Navigate to backend folder:
  cd myapp
  mvn spring-boot:run
 
- Backend runs at:   
- http://localhost:8080/todos
+ Backend runs at: http://localhost:8080/todos
 
 
  ## ▶️ Run Frontend (React)
@@ -78,8 +92,7 @@ cd frontend
 npm install
 npm run dev
 
-Frontend runs at:
-http://localhost:5173
+Frontend runs at: http://localhost:5173
 
 ---
 ---
