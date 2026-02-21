@@ -134,7 +134,7 @@ function App() {
         {/* TODO LIST */}
         <div className="todo-grid">
           {filteredTodos.map((t) => (
-            <div className="todo-card" key={t.id}>
+            <div className={`todo-card ${t.priority.toUpperCase()} ${t.completed ? "done" : ""}`} key={t.id}>
 
               <div className={`priority ${t.priority}`}>
                 {t.priority}
