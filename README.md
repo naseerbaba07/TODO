@@ -63,9 +63,12 @@ The goal of this project was to:
 ---
 
 ## 🧱 Project Structure
-/frontend   -> React (Vite) client
-/backend    -> Spring Boot app
-/database   -> SQL scripts
+
+- /frontend   -> React (Vite) client
+
+- /backend    -> Spring Boot app
+
+- /database   -> SQL scripts -->
 
 ---
 
@@ -173,7 +176,7 @@ npm run dev
 Frontend runs at: http://localhost:5173
 
 ---
----
+
 
 ## 🔌 API Endpoints
 
@@ -187,15 +190,14 @@ Frontend runs at: http://localhost:5173
 
 ---
 
----
 
-🎯 What This Project Demonstrates
+## 🎯 What This Project Demonstrates
 
-• Full-stack architecture
-• REST API design
-• Cloud database integration
-• Modern React UI patterns
-• Production-style project structure
+- Full-stack architecture
+- REST API design
+- Cloud database integration
+- Modern React UI patterns
+- Production-style project structure
 
 ---
 
