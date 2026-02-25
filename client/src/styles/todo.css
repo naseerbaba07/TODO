@@ -1,0 +1,467 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+  transition: background-color 0.35s ease,
+              color 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+/* BACKGROUND */
+.page {
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #ffd6cc, #c5b8b8 20%, #ffd6cc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* MAIN CARD */
+.app-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  width: 1000px;
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+  transition: 0.4s;
+}
+
+/* TITLE */
+.title {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #1f2937;
+}
+
+/* ADD BOX */
+.add-box {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* FILTER ROW CENTER */
+
+
+/* ACTION BUTTON ROW */
+.actions {
+  display: flex;
+ flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+ 
+   justify-content: space-between;
+}
+.top-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+.top-actions .MuiButton-root {
+  min-width: 150px;
+  height: 42px;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+
+
+/* COMPLETE FULL WIDTH */
+.complete-btn {
+  width: 100%;
+  height: 44px;
+  font-weight: 700;
+  border-radius: 12px;
+}
+/* Fix MUI buttons inside cards */
+.actions .MuiButton-root {
+  flex: 0 0 auto;        /* stop stretching */
+  min-width: 110px;      /* equal width */
+  height: 40px;          /* equal height */
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.actions .MuiButton-root:hover {
+  transform: translateY(-1px);
+  transition: 0.2s ease;
+}
+
+.actions .MuiButton-startIcon {
+  margin-right: 6px;
+}
+
+.add-box input {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 2px solid #e5e7eb;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.add-box input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.2);
+  outline: none;
+}
+
+/* BUTTONS */
+.add-btn {
+  background: linear-gradient(135deg,#6366f1,#7c3aed);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(99,102,241,.4);
+}
+
+/* GRID */
+.todo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 18px;
+}
+
+/* CARD */
+/* MODERN TODO CARD */
+.todo-card {
+  position: relative;
+  padding: 24px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #ffffff, #f6f7fb);
+  box-shadow: 
+    0 12px 30px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: 0.25s ease;
+  overflow: hidden;
+}
+
+/* hover lift */
+.todo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 18px 40px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+}
+/* priority color strip */
+.todo-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  border-radius: 22px 22px 0 0;
+}
+
+/* priority colors */
+.todo-card.HIGH::before {
+  background: linear-gradient(90deg,#ff4d4d,#ff6b6b);
+}
+
+.todo-card.MEDIUM::before {
+  background: linear-gradient(90deg,#ff9800,#ffb74d);
+}
+
+.todo-card.LOW::before {
+  background: linear-gradient(90deg,#4caf50,#81c784);
+}
+.todo-card.done {
+  animation: completeCard 0.5s ease forwards;
+}
+
+@keyframes completeCard {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.97);
+    opacity: 0.7;
+  }
+}
+
+.todo-card.done::before {
+  box-shadow: 0 0 12px rgba(16,185,129,0.7);
+}
+/* FILTER BAR CONTAINER */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 25px;
+  padding: 10px;
+  background: #f3f4f7;
+  border-radius: 40px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* BASE BUTTON STYLE */
+.filter-btn {
+  border-radius: 30px !important;
+  padding: 10px 26px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  box-shadow: none !important;
+  transition: 0.25s ease !important;
+}
+
+/* INACTIVE BUTTON LOOK */
+.filter-btn.MuiButton-outlined {
+  background: transparent !important;
+  border: none !important;
+  color: #6b7280 !important;
+}
+
+/* HOVER EFFECT */
+.filter-btn.MuiButton-outlined:hover {
+  background: #e7e9f0 !important;
+}
+
+/* ACTIVE BUTTON LOOK (FILLED) */
+.filter-btn.MuiButton-contained {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15) !important;
+  transform: translateY(-1px);
+}
+
+/* CLEAR ALL SPECIAL STYLE */
+.filter-btn.MuiButton-containedError {
+  background: #e53935 !important;
+}
+/* TASK TEXT */
+.task {
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.completed {
+  position: relative;
+  color: #9ca3af;
+}
+
+.completed::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0%;
+  height: 2px;
+  background: #9ca3af;
+  animation: strike 0.4s forwards ease;
+}
+
+@keyframes strike {
+  to { width: 100%; }
+}
+
+/* ACTION BUTTONS */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.complete-btn,
+.delete-btn,
+.edit-btn,
+.save-btn {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.complete-btn { background: #6366f1; color: white; transition: 0.25s;}
+.delete-btn { background: #ef4444; color: white; }
+.edit-btn { background: #f59e0b; color: white; }
+.save-btn { background: #10b981; color: white; }
+
+.complete-btn:hover,
+.delete-btn:hover,
+.edit-btn:hover,
+.save-btn:hover {
+  transform: scale(1.05);
+}
+
+.date {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+
+
+.edit-input,
+.edit-date {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* PRIORITY COLORS */
+.priority {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.priority.HIGH { color: #ef4444; }
+.priority.MEDIUM { color: #f59e0b; }
+.priority.LOW { color: #10b981; }
+
+/* FILTER BUTTONS */
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.filters button {
+  padding: 8px 18px;
+  border-radius: 25px;
+  border: none;
+  background: #e5e7eb;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filters button.active {
+  background: #6366f1;
+  color: white;
+  box-shadow: 0 10px 20px rgba(99,102,241,.3);
+}
+
+/* DARK MODE */
+
+
+ .dark {
+  background: radial-gradient(circle at center, #0b0115, #0f172a 70%, #000000);
+}
+
+.dark .app-card {
+  background: rgba(30,41,59,0.85);
+  backdrop-filter: blur(14px);
+  color: #000000;
+}
+
+.dark .todo-card {
+  background: #334155;
+}
+
+.dark .todo-card:hover {
+  box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+}
+
+.dark .title {
+  color: #ffffff; 
+}
+
+.dark .add-box {
+  background: #1e293b;
+}
+
+.dark input ,
+.dark select{
+  background: #334155;
+  color: white;
+  border: 1px solid #475569;
+}
+
+
+
+.dark-toggle {
+  float: right;
+  margin-bottom: 10px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #111827;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.todo-card {
+  animation: fadeUp 0.4s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* FILTER BUTTON ROW */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+
+.task {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2d3436;
+  margin-top: 8px;
+}
+
+.date {
+  color: #6b7280;
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+.task.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
