@@ -71,4 +71,11 @@ public ResponseEntity<TodoUser> updateTodo(
         todoRepo.deleteById(id);
         return ResponseEntity.ok().build();
     }
+   @DeleteMapping("/clear")
+    public ResponseEntity<?> clearAllTodos() {
+        todoRepo.deleteAll();
+        return ResponseEntity.ok().build();
+    }
+
+
 }
