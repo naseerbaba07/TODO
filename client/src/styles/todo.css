@@ -9,10 +9,15 @@
               border-color 0.35s ease,
               box-shadow 0.35s ease;
 }
+body {
+  margin: 0;
+  padding: 0;
+}
 
 /* BACKGROUND */
 .page {
-  min-height: 100vh;
+  min-height: 100vh;  
+  min-height: 100dvh;  
   background: radial-gradient(circle at center, #ffd6cc, #c5b8b8 20%, #ffd6cc);
   display: flex;
   justify-content: center;
@@ -25,7 +30,8 @@
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   padding: 40px;
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
   border-radius: 24px;
   box-shadow: 0 30px 80px rgba(0,0,0,0.25);
   transition: 0.4s;
@@ -464,4 +470,64 @@
 .task.completed {
   text-decoration: line-through;
   opacity: 0.6;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .page {
+    padding: 20px 10px;
+    align-items: flex-start;
+  }
+
+  .app-card {
+    padding: 25px 18px;
+    border-radius: 18px;
+  }
+
+  .title {
+    font-size: 30px;
+    margin-bottom: 25px;
+  }
+
+  /* ADD TASK ROW STACK */
+  .add-box {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .add-box input,
+  .add-box select,
+  .add-box button {
+    width: 100%;
+  }
+
+  /* FILTER PILLS */
+  .filters {
+    width: 100%;
+    border-radius: 20px;
+    padding: 8px;
+  }
+
+  .filter-btn {
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+  }
+
+  /* TODO GRID -> single column */
+  .todo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* CARD TEXT SIZES */
+  .task {
+    font-size: 18px;
+  }
+
+  .date {
+    font-size: 13px;
+  }
+
 }
