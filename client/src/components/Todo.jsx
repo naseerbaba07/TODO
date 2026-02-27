@@ -52,7 +52,7 @@ function Todo() {
   const addTodo = async () => {
     if (!workname.trim()) return;
     try {
-      await API.post("/save", { workname, dueDate, priority });
+      await API.post("/save", { workname, dueDate, priority,work: false  });
       setWorkname("");
       setDueDate("");
       setPriority("MEDIUM");
@@ -64,14 +64,14 @@ function Todo() {
   };
 
   const toggleTodo = async (todo) => {
-    try {
-      await API.put(`/${todo.id}`, { work: !todo.work });
-      refreshTodos();
-      toast.success(todo.work ? "Task marked as pending!" : "Task completed!");
-    } catch {
-      toast.error("Failed to update task status!");
-    }
-  };
+  try {
+    await API.put(`/${todo.id}`, { work: !todo.work });
+    refreshTodos();
+    toast.success(todo.work ? "Task marked as pending!" : "Task completed!");
+  } catch {
+    toast.error("Failed to update task status!");
+  }
+};
 
   const deleteTodo = async (id) => {
     try {
@@ -111,10 +111,25 @@ function Todo() {
     }
   };
 
-  const filteredTodos = todos.filter((t) => {
-    if (filter === "COMPLETED") return t.work;
-    if (filter === "PENDING") return !t.work;
+  const priorityOrder = { HIGH: 1, MEDIUM: 2, LOW: 3 };
+
+const filteredTodos = todos
+  .filter((t) => {
+    if (filter === "work") return t.work;
+    if (filter === "PENDING") return !t.work;;
     return true;
+  })
+  .sort((a, b) => {
+    // Compare due dates first
+    const dateA = a.dueDate ? dayjs(a.dueDate).unix() : Infinity;
+    const dateB = b.dueDate ? dayjs(b.dueDate).unix() : Infinity;
+
+    if (dateA !== dateB) {
+      return dateA - dateB; // earlier dates first
+    }
+
+    // If due dates are equal, compare priority
+    return priorityOrder[a.priority] - priorityOrder[b.priority];
   });
 
   return (
@@ -178,12 +193,12 @@ function Todo() {
   </Button>
 
   <Button
-    variant={filter === "COMPLETED" ? "contained" : "outlined"}
+    variant={filter === "work" ? "contained" : "outlined"}
     color="success"
     className="filter-btn"
-    onClick={() => setFilter("COMPLETED")}
+    onClick={() => setFilter("work")}
   >
-    Completed
+    work
   </Button>
 
   <Button
@@ -210,13 +225,13 @@ function Todo() {
           {/* TODO LIST */}
           <div className="todo-grid">
             {filteredTodos.map((t) => {
-              const isOverdue =
-                t.dueDate && dayjs(t.dueDate).isBefore(dayjs());
+             const isOverdue = !t.work && t.dueDate && dayjs(t.dueDate).isBefore(dayjs(), "day");
+
 
               return (
                 <div
                   className={`todo-card ${t.priority.toUpperCase()} ${
-                    t.completed ? "done" : ""
+                    t.work ? "done" : ""
                   }`}
                   key={t.id}
                 >
@@ -275,20 +290,26 @@ function Todo() {
                     </>
                   ) : (
                     <>
-                      <h3 className={`task ${t.work ? "completed" : ""}`}>
+                      <h3 className={`task ${t.work ? "work" : ""}`}>
                         {t.workname}
                       </h3>
 
                       {t.dueDate && (
-                        <p className="date">
-                          📅 Due: {dayjs(t.dueDate).format("DD MMM YYYY")}
-                          {isOverdue && (
-                            <span style={{ color: "red", marginLeft: "8px" }}>
-                              Overdue
-                            </span>
-                          )}
-                        </p>
-                      )}
+  <p className="date">
+    📅 Due: {dayjs(t.dueDate).format("DD MMM YYYY")}
+    {t.work && (
+      <span style={{ color: "#2e7d32", marginLeft: "8px", fontWeight: 600 }}>
+        Completed
+      </span>
+    )}
+    {!t.work && isOverdue && (
+      <span style={{ color: "red", marginLeft: "8px", fontWeight: 600 }}>
+        Overdue
+      </span>
+    )}
+  </p>
+)}
+                      
 
                       <div className="actions">
 
