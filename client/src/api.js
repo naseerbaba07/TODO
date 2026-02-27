@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://todos-s9ie.onrender.com"
+  baseURL: "https://todo-1-avon.onrender.com/todos"
 });
 
 export default API;
