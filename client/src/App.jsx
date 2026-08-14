@@ -1,11 +1,14 @@
 // src/App.jsx
 import React from "react";
-import Todo from "./components/Todo";  // ✅ must import the component
+import Todo from "./components/Todo";
+import ChatBot from "./components/ChatBot";
 
 function App() {
   return (
     <div>
       <Todo />
+      
+      <ChatBot />
     </div>
   );
 }

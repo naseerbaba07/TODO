@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import API from "../api";
 import "../styles/todo.css";
 import Button from "@mui/material/Button";
@@ -40,14 +40,32 @@ function Todo() {
     loadTodos();
   }, []);
 
-  const refreshTodos = async () => {
-    try {
-      const res = await API.get("");
-      setTodos(res.data);
-    } catch {
-      toast.error("Failed to refresh tasks!");
-    }
+ const refreshTodos = useCallback(async () => {
+  try {
+    const res = await API.get("");
+    setTodos(res.data);
+  } catch {
+    toast.error("Failed to refresh tasks!");
+  }
+}, []);
+
+useEffect(() => {
+  const handleTodoUpdated = () => {
+    refreshTodos();
   };
+
+  window.addEventListener(
+    "todo-updated",
+    handleTodoUpdated
+  );
+
+  return () => {
+    window.removeEventListener(
+      "todo-updated",
+      handleTodoUpdated
+    );
+  };
+}, [refreshTodos]);
 
   const addTodo = async () => {
     if (!workname.trim()) return;
