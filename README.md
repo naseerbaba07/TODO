@@ -2,8 +2,135 @@
 
 A full-stack Todo Management System built using React, Spring Boot, and PostgreSQL (Neon DB).  
 This project demonstrates full-stack development, REST API design, cloud database integration, and a polished modern UI.
+---
+
+# 🤖 BabaList AI — AI-Powered Task Assistant
+
+BabaList is evolving from a traditional Todo Management System into an **AI-powered personal productivity assistant**.
+
+With **Baba AI**, users will be able to interact with their tasks using natural language instead of manually navigating through multiple screens, filters, and forms.
+
+Instead of asking users to remember specific commands, Baba AI understands what they mean and uses the appropriate task-management capabilities.
+
+### 💬 Example Questions
+
+```text
+What tasks do I have today?
+
+Show me my pending tasks.
+
+Which tasks are overdue?
+
+What do I need to finish this week?
+
+What should I work on first?
+
+How productive was I this week?
+
+Show me all my Java-related tasks.
+
+What tasks are due tomorrow?
+
+Create a task to study Java tomorrow.
+
+Make my DBMS assignment high priority.
+
+Change my Java project deadline to Monday.
+
+Mark my assignment as completed.
+
+Delete my shopping task.
+
+Break my project into smaller tasks.
 
 ---
+
+## 🧠 How Baba AI Works
+
+Baba AI uses a combination of **Google Gemini, Spring Boot, and PostgreSQL**.
+
+The AI understands the user's natural-language request and determines which BabaList capability is required.
+
+```text
+                    User
+                      │
+                      ▼
+               ┌─────────────┐
+               │  Baba AI    │
+               │   Gemini    │
+               └──────┬──────┘
+                      │
+                Understand Intent
+                      │
+        ┌─────────────┼─────────────┐
+        │             │             │
+        ▼             ▼             ▼
+   Task Tools    Analytics Tools  Planning
+        │             │             │
+        └─────────────┼─────────────┘
+                      ▼
+               ┌─────────────┐
+               │ Spring Boot │
+               │   Backend   │
+               └──────┬──────┘
+                      ▼
+               ┌─────────────┐
+               │ PostgreSQL  │
+               └─────────────┘
+
+User
+ ↓
+Gemini
+ ↓
+Tool / Function
+ ↓
+Spring Boot
+ ↓
+Service Layer
+ ↓
+Repository
+ ↓
+PostgreSQL
+
+## 🚀 Baba AI Capabilities
+
+### 📋 Task Management
+
+Baba AI will understand natural-language requests for:
+
+- Creating tasks
+- Updating tasks
+- Completing tasks
+- Deleting tasks
+- Changing deadlines
+- Changing priorities
+- Searching tasks
+- Finding specific tasks
+
+Example:
+
+> "Create a task to prepare for my Java exam tomorrow."
+
+Baba AI can understand the request and create the appropriate task.
+
+---
+
+### 🔎 Intelligent Task Search
+
+Users don't need to use complicated filters.
+
+They can simply ask:
+
+```text
+Show my Java tasks.
+
+Do I have anything related to DBMS?
+
+Show assignments that are still pending.
+
+What tasks are due this week?
+
+
 ## 📌 Project Overview
 
 This application allows to manage tasks with priority levels, due dates, filtering, and status tracking. It follows a clean frontend-backend separation using REST APIs.
@@ -61,6 +188,14 @@ The goal of this project was to:
 
 
 ---
+### 🤖 AI
+
+- Google Gemini API
+- Gemini Function Calling
+- AI-powered task understanding
+- Natural-language task management
+- AI productivity analysis
+- AI task planning
 
 ## 🧱 Project Structure
 
@@ -94,6 +229,14 @@ The goal of this project was to:
 
 ### Database
 - PostgreSQL (Neon Cloud DB)
+
+### AI
+
+- Google Gemini API
+- Gemini Function Calling
+- AI Task Agent
+- Natural Language Processing
+- AI Productivity Analysis
 
 ---
 
